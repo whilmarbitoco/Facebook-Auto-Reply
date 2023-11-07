@@ -1,7 +1,18 @@
 const fs = require("fs");
 const login = require("fca-unofficial");
-const { server } = require("./server.js");
+const express = require('express');
+const app = express();
+const port = 3000; 
 
+
+app.get('/', (req, res) => {
+  res.send('Hello, Scylla!');
+});
+
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 
 login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, api) => {
